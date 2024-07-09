@@ -1,0 +1,38 @@
+name: FE-React
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    Checks:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+            -   name: Install dependencies in root
+                run: npm i
+
+            -   name: Run type check
+                run: |
+                    cd packages/react
+                    npm run typecheck
+
+            -   name: Run format check
+                run: |
+                    cd packages/react
+                    npm run format:check
+
+            -   name: Run lint check
+                run: |
+                    cd packages/react
+                    npm run lint:check
+
+#            -   name: Run tests
+#                run: |
+#                    cd packages/react
+#                    npm run test -- --run

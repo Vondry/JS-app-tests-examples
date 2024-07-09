@@ -1,0 +1,39 @@
+name: FE-Svelte
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    Checks:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+            -   name: Install dependencies in root
+                run: npm i
+
+# This bugs out in pipeline    
+#            -   name: Run type check
+#                run: |
+#                    cd packages/svelte
+#                    npm run typecheck
+
+            -   name: Run format check
+                run: |
+                    cd packages/svelte
+                    npm run format:check
+
+            -   name: Run lint check
+                run: |
+                    cd packages/svelte
+                    npm run lint:check
+
+#            -   name: Run tests
+#                run: |
+#                    cd packages/svelte
+#                    npm run test -- --run

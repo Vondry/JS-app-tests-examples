@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    @apply flex flex-col min-h-screen bg-gray-200 dark:bg-zinc-800 dark:text-white;
+}
+
+.container {
+    @apply max-w-screen-md px-3.5 py-5 flex mx-auto;
+}

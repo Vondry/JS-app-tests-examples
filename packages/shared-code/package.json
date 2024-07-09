@@ -1,0 +1,9 @@
+{
+  "name": "shared-code",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Tomas Vondracek",
+  "private": true,
+  "type": "module",
+  "main": "index.js"
+}

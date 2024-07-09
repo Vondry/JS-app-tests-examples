@@ -1,0 +1,38 @@
+{
+  "name": "vue",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Tomas Vondracek",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint:check": "npm run lint -- --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint ./src --ext ts,vue",
+    "format:write": "npm run format -- --write",
+    "format:check": "npm run format -- --check",
+    "format": "prettier index.html './src/**/*.ts' './src/**/*.vue' './src/**/*.css'",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "postinstall": "cpy ../../node_modules/@vue/test-utils ./node_modules/@vue"
+  },
+  "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@tanstack/vue-query": "^5.51.0",
+    "@tanstack/vue-query-devtools": "^5.51.0",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "cpy-cli": "^5.0.0",
+    "eslint-plugin-vue": "^9.27.0",
+    "vue-tsc": "^2.0.26"
+  }
+}

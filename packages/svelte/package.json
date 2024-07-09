@@ -1,0 +1,39 @@
+{
+  "name": "svelte",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Tomas Vondracek",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
+    "lint:check": "npm run lint -- --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint ./src --ext ts,svelte",
+    "format:write": "npm run format -- --write",
+    "format:check": "npm run format -- --check",
+    "format": "prettier index.html './src/**/*.ts' './src/**/*.svelte' './src/**/*.css'",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@testing-library/svelte": "^5.2.0",
+    "@tsconfig/svelte": "^5.0.4",
+    "eslint-plugin-svelte": "^2.41.0",
+    "prettier-plugin-svelte": "^3.2.5",
+    "svelte-check": "^3.8.4",
+    "svelte-eslint-parser": "^0.39.2"
+  },
+  "dependencies": {
+    "@tanstack/svelte-query": "^5.50.3",
+    "@tanstack/svelte-query-devtools": "^5.50.3",
+    "svelte": "^4.2.18",
+    "svelte-fa": "^4.0.2"
+  }
+}
