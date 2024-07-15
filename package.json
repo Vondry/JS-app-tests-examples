@@ -9,8 +9,9 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "format:write": "concurrently 'cd packages/be && npm run format:write' 'cd packages/vue && npm run format:write' 'cd packages/react && npm run format:write' 'cd packages/svelte && npm run format:write'",
-    "lint:fix": "concurrently 'cd packages/be && npm run lint:fix' 'cd packages/vue && npm run lint:fix' 'cd packages/react && npm run lint:fix' 'cd packages/svelte && npm run lint:fix'",
+    "test": "concurrently 'cd packages/be && npm run test' 'cd packages/vue && npm run test -- --run' 'cd packages/react && npm run test -- --run' 'cd packages/svelte && npm run test -- --run'",
+    "format:write": "concurrently 'cd packages/be && npm run format:check' 'cd packages/vue && npm run format:check' 'cd packages/react && npm run format:check' 'cd packages/svelte && npm run format:check'",
+    "lint:fix": "concurrently 'cd packages/be && npm run lint:check' 'cd packages/vue && npm run lint:check' 'cd packages/react && npm run lint:check' 'cd packages/svelte && npm run lint:check'",
     "prepare": "husky"
   },
   "workspaces": [
