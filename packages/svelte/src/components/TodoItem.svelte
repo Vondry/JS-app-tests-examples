@@ -14,6 +14,7 @@
 </script>
 
 <div
+    data-testid={`todo-${todo.id}`}
     class="flex gap-2 items-center justify-between border border-gray-400 dark:border-gray-500 rounded-lg px-2.5 py-2"
 >
     <button

@@ -13,6 +13,13 @@ export const useDeleteTodoMutation = () => {
                 endpoint: `todos/${todo.id}`,
                 method: 'DELETE'
             }),
-        onSuccess: () => queryClient.refetchQueries({ queryKey: [QUERY_KEYS.GET_TODOS] })
+        onSuccess: (wasDeleted, deletedTodo) => {
+            if (wasDeleted) {
+                // Remove deleted item from query cache if deletion was successfully
+                return queryClient.setQueryData<Todo[]>([QUERY_KEYS.GET_TODOS], (cachedTodos) =>
+                    cachedTodos?.filter((cachedTodo) => cachedTodo.id !== deletedTodo.id)
+                );
+            }
+        }
     });
 };

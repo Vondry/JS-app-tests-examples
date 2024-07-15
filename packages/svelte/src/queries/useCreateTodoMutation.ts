@@ -1,6 +1,6 @@
 import { createMutation, useQueryClient } from '@tanstack/svelte-query';
 import { customFetch } from 'shared-code/utils/fetch';
-import type { TodoDescription } from 'shared-code/models/Todo';
+import type { Todo, TodoDescription } from 'shared-code/models/Todo';
 import type { CreateTodoResponse } from 'shared-code/models/Api';
 import { QUERY_KEYS } from './queryKeys';
 
@@ -16,6 +16,11 @@ export const useCreateTodoMutation = () => {
                 },
                 { description: todoDescription }
             ),
-        onSuccess: () => queryClient.refetchQueries({ queryKey: [QUERY_KEYS.GET_TODOS] })
+        onSuccess: (createdTodo) => {
+            // Add created item to query cache if creation was successful
+            return queryClient.setQueryData<Todo[]>([QUERY_KEYS.GET_TODOS], (cachedTodos) =>
+                (cachedTodos ?? []).concat(createdTodo)
+            );
+        }
     });
 };

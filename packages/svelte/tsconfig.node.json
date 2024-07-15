@@ -6,7 +6,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
+
+    // Add types support for @testing-library/jest-dom asserts like .toBeInTheDocument()
+    "types": ["@testing-library/jest-dom/vitest"]
   },
   "include": ["vite.config.ts"]
 }

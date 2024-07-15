@@ -4,9 +4,13 @@
     import App from './App.svelte';
 
     const queryClient = new QueryClient();
+
+    export let hideDevTools = false;
 </script>
 
 <QueryClientProvider client={queryClient}>
     <App />
-    <SvelteQueryDevtools />
+    {#if !hideDevTools}
+        <SvelteQueryDevtools initialIsOpen={false} />
+    {/if}
 </QueryClientProvider>
