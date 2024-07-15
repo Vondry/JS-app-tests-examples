@@ -10,7 +10,10 @@ type Props = {
 };
 
 export const TodoItem = ({ todo, onTodoCompleted, onTodoDelete }: Props) => (
-    <div className="flex gap-2 items-center justify-between border border-gray-400 dark:border-gray-500 rounded-lg px-2.5 py-2">
+    <div
+        data-testid={`todo-${todo.id}`}
+        className="flex gap-2 items-center justify-between border border-gray-400 dark:border-gray-500 rounded-lg px-2.5 py-2"
+    >
         <button
             className="flex gap-2 items-center cursor-pointer group px-2 py-2"
             onClick={() => onTodoCompleted(todo)}

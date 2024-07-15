@@ -1,12 +1,12 @@
+import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { App } from './App';
 
 const queryClient = new QueryClient();
 
-export const Providers = () => (
+export const Providers = ({ children }: React.PropsWithChildren) => (
     <QueryClientProvider client={queryClient}>
-        <App />
+        {children}
         <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 );

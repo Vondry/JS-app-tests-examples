@@ -16,6 +16,13 @@ export const useCompleteTodoMutation = () => {
                 },
                 { completed: !todo.completed }
             ),
-        onSuccess: () => queryClient.refetchQueries({ queryKey: [QUERY_KEYS.GET_TODOS] })
+        onSuccess: (updatedTodo) => {
+            // Update query cache with the updated item returned from BE
+            return queryClient.setQueryData<Todo[]>([QUERY_KEYS.GET_TODOS], (cachedTodos) =>
+                cachedTodos?.map((cachedTodo) =>
+                    cachedTodo.id === updatedTodo.id ? updatedTodo : cachedTodo
+                )
+            );
+        }
     });
 };
