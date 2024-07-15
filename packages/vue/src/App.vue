@@ -29,6 +29,7 @@ const deleteTodo = (todo: Todo) => {
     deleteTodoMutation.mutate(todo);
 };
 </script>
+
 <template>
     <main class="flex-1">
         <div class="container flex-col gap-6">

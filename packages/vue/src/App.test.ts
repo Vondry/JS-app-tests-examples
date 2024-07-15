@@ -1,17 +1,12 @@
 import { describe, expect, beforeAll, afterAll, test } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
+import { VueQueryPlugin } from '@tanstack/vue-query';
 import { todoServer } from 'shared-code/tests/server';
 import { GET_TODOS } from 'shared-code/tests/todos.fixtures';
-import { App } from './App';
-import { Providers } from './Providers';
+import App from './App.vue';
 
-const renderAppWithProviders = () =>
-    render(
-        <Providers>
-            <App />
-        </Providers>
-    );
+const renderAppWithProviders = () => render(App, { global: { plugins: [VueQueryPlugin] } });
 
 describe(App.name, () => {
     beforeAll(() => {
