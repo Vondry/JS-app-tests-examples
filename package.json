@@ -10,7 +10,7 @@
   "description": "",
   "scripts": {
     "test": "concurrently 'cd packages/be && npm run test' 'cd packages/vue && npm run test -- --run' 'cd packages/react && npm run test -- --run' 'cd packages/svelte && npm run test -- --run'",
-    "test:e2e": "concurrently 'cd packages/react && npm run cy' 'cd packages/vue && npm run cy'",
+    "test:e2e": "concurrently -n E2E-REACT,E2E-VUE 'cd packages/react && npm run cy' 'cd packages/vue && npm run cy'",
     "format:write": "concurrently 'cd packages/be && npm run format:check' 'cd packages/vue && npm run format:check' 'cd packages/react && npm run format:check' 'cd packages/svelte && npm run format:check'",
     "lint:fix": "concurrently 'cd packages/be && npm run lint:check' 'cd packages/vue && npm run lint:check' 'cd packages/react && npm run lint:check' 'cd packages/svelte && npm run lint:check'",
     "prepare": "husky"

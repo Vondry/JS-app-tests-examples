@@ -21,8 +21,8 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "postinstall": "cpy ../../node_modules/@vue/test-utils ./node_modules/@vue",
-    "cy:ui": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8000\" \"cypress open\"",
-    "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8000\" \"cypress run\""
+    "cy:ui": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8002\" \"cypress open\"",
+    "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8002\" \"cypress run\""
   },
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.8",

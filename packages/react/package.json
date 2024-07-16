@@ -20,8 +20,8 @@
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "cy:ui": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8000\" \"cypress open\"",
-    "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8000\" \"cypress run\""
+    "cy:ui": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8001\" \"cypress open\"",
+    "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8001\" \"cypress run\""
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.2",
