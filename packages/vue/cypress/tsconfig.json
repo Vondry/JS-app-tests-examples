@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "isolatedModules": false,
+    "types": ["cypress", "chai"]
+  },
+  "include": [
+    "../cypress/**/*.ts",
+    "../cypress.config.js",
+    "../node_modules/cypress/**/*.ts"
+  ]
+}
