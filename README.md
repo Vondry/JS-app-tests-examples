@@ -41,6 +41,14 @@ using [npm workspaces](https://docs.npmjs.com/cli/v10/using-npm/workspaces).
     - App were created based
       on [Vite templates](https://vitejs.dev/guide/#scaffolding-your-first-vite-project): `npm create vite@latest <app-name> --template {react|vue|svelte}-ts`
 
+#### Testing
+
+- **Unit** and **integration** tests are written using [Testing Library](https://testing-library.com) (Jest style
+  assertions)
+    - APIs are mocked using [mswjs](https://mswjs.io/) node server
+- **E2E** tests are written using [Cypress](https://www.cypress.io)
+    - APIs are mocked using Cypress [intercept](https://docs.cypress.io/api/commands/intercept)
+
 ### Features of the backend app
 
 - There is an API for CRUD operations for TODOs
