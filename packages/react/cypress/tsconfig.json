@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2020",
     "isolatedModules": false,
     "types": ["cypress", "chai"]
   },

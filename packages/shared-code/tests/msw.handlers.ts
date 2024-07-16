@@ -1,15 +1,12 @@
 import { http, HttpResponse } from 'msw';
-import { GET_TODOS } from './todos.fixtures';
-import { GetTodosResponse, PatchTodoResponse, CreateTodoResponse, DeleteTodoResponse } from '../models/Api';
-
-// Simulates getting TODO from DB
-const findTodoById = (id: string) => GET_TODOS.find((todo) => todo.id === Number(id))!;
+import type { GetTodosResponse, PatchTodoResponse, CreateTodoResponse, DeleteTodoResponse } from '../models/Api';
+import { completeTodo, createTodo, deleteTodo, getTodos } from './handlers';
 
 const API = 'http://localhost:3000/todos';
 
 export const handlers = [
     // Getting TODOs
-    http.get<never, never, GetTodosResponse>(API, () => HttpResponse.json(GET_TODOS)),
+    http.get<never, never, GetTodosResponse>(API, () => HttpResponse.json(getTodos())),
 
 
     // For creating TODO item
@@ -17,14 +14,7 @@ export const handlers = [
                                                                                   request
                                                                               }) => {
         const { description } = await request.json();
-
-        return HttpResponse.json({
-            id: 100,
-            description,
-            completed: false,
-            created_at: new Date(),
-            updated_at: new Date()
-        });
+        return HttpResponse.json(createTodo({ description }));
     }),
 
     // For completing TODOs
@@ -32,16 +22,15 @@ export const handlers = [
                                                                                                    request,
                                                                                                    params
                                                                                                }) => {
-        const data = await request.json();
+        const { completed } = await request.json();
         const { id } = params;
-        const todo = findTodoById(id);
-        return HttpResponse.json({ ...todo, ...data });
-    }),
 
+        return HttpResponse.json(completeTodo({ id, completed }));
+    }),
 
     // For completing TODOs
     http.delete<{ id: string }, never, DeleteTodoResponse>(`${API}/:id`, () => {
         // No logic for deletion is needed
-        return HttpResponse.json(true);
+        return HttpResponse.json(deleteTodo());
     })
 ] as const;
