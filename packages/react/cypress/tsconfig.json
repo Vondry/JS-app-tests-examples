@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "types": ["cypress", "chai"]
+  },
+  "include": [
+    "../cypress/**/*.ts",
+    "../cypress.config.js",
+    "../node_modules/cypress/**/*.ts"
+  ]
+}
