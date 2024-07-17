@@ -61,9 +61,9 @@ using [npm workspaces](https://docs.npmjs.com/cli/v10/using-npm/workspaces).
 
 ## Running apps
 
-1. First run `npm install` in the root (no need to run install in packages)
-    - Note that BE app require more configuration, see [README for BE](./packages/be/README.md)
-2. Then run `npm run dev` in the BE application and at least one of the FE app
+1. Run `npm install` in the root (no need to run install in packages)
+    - Note that BE app requires connection to the database, see [README for BE](./packages/be/README.md) for more details
+2. Then run `npm run dev` in the [BE application](./packages/be) and also in one of the FE app
 
 -------------
 
