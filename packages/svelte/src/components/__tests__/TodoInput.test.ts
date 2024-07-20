@@ -63,8 +63,8 @@ describe('TodoInput', () => {
 
         // 💡 Change button name and observe the error. Then change getByRole to queryByRole and check it again.
         await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
-        // queryBy - throws error if element is not found
-        // getBy - returns null if element is not found
+        // getBy - throws error if element is not found
+        // queryBy - returns null if element is not found
 
         // ASSERT
         expect(onSubmit).not.toHaveBeenCalled();
