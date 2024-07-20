@@ -44,8 +44,6 @@ export const cypressIntercepts = () => {
         const { completed } = req.body;
         const id = getLastUrlPathSegment(req.url);
 
-        console.log({ id, completed });
-        console.log(completeTodo({ id, completed }));
         return req.reply({ statusCode: 200, body: completeTodo({ id, completed }) });
     }).as(
         'completeTodo'
