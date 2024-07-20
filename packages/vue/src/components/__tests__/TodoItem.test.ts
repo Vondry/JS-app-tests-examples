@@ -13,7 +13,7 @@ import TodoItem from '../TodoItem.vue';
  */
 
 describe('TodoItem', () => {
-    test('User can submit non-empty todo', async () => {
+    test('User can interact with the component', async () => {
         // ARRANGE
         const todo: Todo = {
             id: 1,

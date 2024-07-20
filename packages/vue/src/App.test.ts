@@ -8,7 +8,7 @@ import App from './App.vue';
 
 const renderAppWithProviders = () => render(App, { global: { plugins: [VueQueryPlugin] } });
 
-describe(App.name, () => {
+describe('App', () => {
     beforeAll(() => {
         todoServer.listen();
     });
