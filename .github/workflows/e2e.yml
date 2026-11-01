@@ -7,6 +7,7 @@ on:
     paths:
       - "packages/react/**"
       - "packages/vue/**"
+      - "packages/svelte/**"
       - "packages/shared-code/**"
       - "package*.json"
       - ".github/workflows/e2e.yml"
@@ -16,6 +17,7 @@ on:
     paths:
       - "packages/react/**"
       - "packages/vue/**"
+      - "packages/svelte/**"
       - "packages/shared-code/**"
       - "package*.json"
       - ".github/workflows/e2e.yml"
@@ -34,7 +36,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: "npm"
 
       - name: Install dependencies in root
@@ -57,7 +59,30 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
+          cache: "npm"
+
+      - name: Install dependencies in root
+        run: npm ci
+        working-directory: .
+
+      - name: Run Cypress E2E
+        run: npm run cy
+
+  e2e-svelte:
+    name: E2E Svelte (Cypress)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/svelte
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
           cache: "npm"
 
       - name: Install dependencies in root

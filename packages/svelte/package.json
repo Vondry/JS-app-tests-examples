@@ -19,7 +19,9 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "cy:ui": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8003\" \"cypress open\"",
+    "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8003\" \"cypress run\""
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
