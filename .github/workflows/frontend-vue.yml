@@ -1,38 +1,54 @@
 name: FE-Vue
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/vue/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/frontend-vue.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/vue/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/frontend-vue.yml"
 
 jobs:
-    Checks:
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout code
-                uses: actions/checkout@v4
-            -   name: Install dependencies in root
-                run: npm i
+  Checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/vue
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            -   name: Run type check
-                run: |
-                    cd packages/vue
-                    npm run typecheck
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
 
-            -   name: Run format check
-                run: |
-                    cd packages/vue
-                    npm run format:check
+      - name: Install dependencies in root
+        run: npm ci
+        working-directory: .
 
-            -   name: Run lint check
-                run: |
-                    cd packages/vue
-                    npm run lint:check
+      - name: Run type check
+        run: npm run typecheck
 
-#            -   name: Run tests
-#                run: |
-#                    cd packages/vue
-#                    npm run test -- --run
+      - name: Run format check
+        run: npm run format:check
+
+      - name: Run lint check
+        run: npm run lint:check
+
+      - name: Run tests
+        run: npm run test -- --run
+
+      - name: Run build
+        run: npm run build

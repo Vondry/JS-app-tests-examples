@@ -1,0 +1,68 @@
+name: E2E-Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/react/**"
+      - "packages/vue/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/e2e.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/react/**"
+      - "packages/vue/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/e2e.yml"
+
+jobs:
+  e2e-react:
+    name: E2E React (Cypress)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/react
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies in root
+        run: npm ci
+        working-directory: .
+
+      - name: Run Cypress E2E
+        run: npm run cy
+
+  e2e-vue:
+    name: E2E Vue (Cypress)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/vue
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies in root
+        run: npm ci
+        working-directory: .
+
+      - name: Run Cypress E2E
+        run: npm run cy

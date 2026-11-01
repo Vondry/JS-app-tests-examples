@@ -1,0 +1,54 @@
+name: FE-Svelte
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/svelte/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/frontend-svelte.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/svelte/**"
+      - "packages/shared-code/**"
+      - "package*.json"
+      - ".github/workflows/frontend-svelte.yml"
+
+jobs:
+  Checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/svelte
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies in root
+        run: npm ci
+        working-directory: .
+
+      - name: Run type check
+        run: npm run typecheck
+
+      - name: Run format check
+        run: npm run format:check
+
+      - name: Run lint check
+        run: npm run lint:check
+
+      - name: Run tests
+        run: npm run test -- --run
+
+      - name: Run build
+        run: npm run build
