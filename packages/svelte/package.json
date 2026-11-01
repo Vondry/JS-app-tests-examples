@@ -1,5 +1,5 @@
 {
-  "name": "svelte",
+  "name": "svelte-app",
   "version": "0.0.1",
   "description": "",
   "author": "Tomas Vondracek",
@@ -12,7 +12,7 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
     "lint:check": "npm run lint -- --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "lint": "eslint ./src --ext ts,svelte",
+    "lint": "eslint ./src",
     "format:write": "npm run format -- --write",
     "format:check": "npm run format -- --check",
     "format": "prettier index.html './src/**/*.ts' './src/**/*.svelte' './src/**/*.css'",
@@ -22,24 +22,24 @@
     "test:coverage": "vitest --coverage"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@testing-library/jest-dom": "^7.0.1",
-    "@testing-library/svelte": "^5.2.0",
+    "@testing-library/svelte": "^5.4.2",
     "@tsconfig/svelte": "^5.0.8",
-    "@vitest/coverage-v8": "^2.1.9",
-    "@vitest/ui": "^2.1.9",
+    "@vitest/coverage-v8": "^5.0.5",
+    "@vitest/ui": "^5.0.5",
     "eslint": "^9.39.5",
     "eslint-plugin-svelte": "^2.46.1",
     "prettier-plugin-svelte": "^3.2.5",
-    "svelte": "^4.2.20",
-    "svelte-check": "^3.8.4",
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.7",
     "svelte-eslint-parser": "^0.39.2",
-    "vite": "^5.4.21",
-    "vitest": "^2.1.9"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   },
   "dependencies": {
-    "@tanstack/svelte-query": "^5.90.2",
-    "@tanstack/svelte-query-devtools": "^5.90.2",
-    "svelte-fa": "^4.0.2"
+    "@tanstack/svelte-query": "^6.3.7",
+    "@tanstack/svelte-query-devtools": "^6.3.7",
+    "svelte-fa": "^4.0.4"
   }
 }

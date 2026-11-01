@@ -1,5 +1,5 @@
 import { describe, expect, beforeAll, afterAll, test } from 'vitest';
-import { render, screen, within, waitForElementToBeRemoved } from '@testing-library/svelte';
+import { render, screen, within } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
 import { todoServer } from 'shared-code/tests/server';
 import { GET_TODOS } from 'shared-code/tests/todos.fixtures';
@@ -80,10 +80,7 @@ describe('App', () => {
         // Click on the delete button, that should trigger deletion request
         await userEvent.click(await within(component).findByText('Remove todo'));
 
-        // Wait until element is not removed
-        await waitForElementToBeRemoved(screen.queryByText(firstTodo.description));
-
         // Check that item is no longer in the DOM (can not be found)
-        expect(screen.queryByText(firstTodo.description)).not.toBeInTheDocument();
+        await expect(screen.findByText(firstTodo.description)).rejects.toThrow();
     });
 });

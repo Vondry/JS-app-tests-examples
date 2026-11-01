@@ -20,8 +20,7 @@ describe('TodoInput', () => {
         const onSubmit = vi.fn();
         const todo = 'I need to go out with my 🐕';
 
-        const { component } = render(TodoInput, { props: { todo } });
-        component.$on('submit', onSubmit);
+        render(TodoInput, { props: { todo, onSubmit } });
 
         // ACT
         await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
@@ -37,8 +36,7 @@ describe('TodoInput', () => {
         // ARRANGE
         const onSubmit = vi.fn();
 
-        const { component } = render(TodoInput, { props: { todo: '' } });
-        component.$on('submit', onSubmit);
+        render(TodoInput, { props: { todo: '', onSubmit } });
 
         // ACT
 
@@ -56,8 +54,7 @@ describe('TodoInput', () => {
     test('User can not submit empty todo', async () => {
         // ARRANGE
         const onSubmit = vi.fn();
-        const { component } = render(TodoInput, { props: { todo: '' } });
-        component.$on('submit', onSubmit);
+        render(TodoInput, { props: { todo: '', onSubmit } });
 
         // ACT
 

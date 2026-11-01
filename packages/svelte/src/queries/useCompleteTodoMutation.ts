@@ -7,7 +7,7 @@ import { QUERY_KEYS } from './queryKeys';
 export const useCompleteTodoMutation = () => {
     const queryClient = useQueryClient();
 
-    return createMutation({
+    return createMutation(() => ({
         mutationFn: (todo: Todo) =>
             customFetch<PatchTodoResponse>(
                 {
@@ -24,5 +24,5 @@ export const useCompleteTodoMutation = () => {
                 )
             );
         }
-    });
+    }));
 };

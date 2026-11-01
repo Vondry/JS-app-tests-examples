@@ -6,6 +6,7 @@ export default defineConfig({
     plugins: [react()],
     // @ts-ignore
     test: {
+        cache: false,
         globals: true,
         environment: 'jsdom',
         setupFiles: ['../shared-code/tests/setupTests.ts']

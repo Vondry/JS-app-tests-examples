@@ -10,6 +10,7 @@ export default defineConfig({
     ],
     // @ts-ignore
     test: {
+        cache: false,
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./src/setupTests.ts']

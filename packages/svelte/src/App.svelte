@@ -7,33 +7,33 @@
     import { useCompleteTodoMutation } from './queries/useCompleteTodoMutation';
     import { useDeleteTodoMutation } from './queries/useDeleteTodoMutation';
 
-    let todo = '';
+    let todo = $state('');
     const todosQuery = useGetTodosQuery();
     const createTodoMutation = useCreateTodoMutation();
     const completeTodoMutation = useCompleteTodoMutation();
     const deleteTodoMutation = useDeleteTodoMutation();
 
     const createTodo = () => {
-        $createTodoMutation.mutate(todo);
+        createTodoMutation.mutate(todo);
         todo = '';
     };
 
-    const completeTodo = (event: CustomEvent<Todo>) => {
-        $completeTodoMutation.mutate(event.detail);
+    const completeTodo = (item: Todo) => {
+        completeTodoMutation.mutate(item);
     };
 
-    const deleteTodo = (event: CustomEvent<Todo>) => {
-        $deleteTodoMutation.mutate(event.detail);
+    const deleteTodo = (item: Todo) => {
+        deleteTodoMutation.mutate(item);
     };
 </script>
 
 <main class="flex-1">
     <div class="container flex-col gap-6">
-        <TodoInput bind:todo on:submit={createTodo} />
+        <TodoInput bind:todo onSubmit={createTodo} />
         <TodoList
-            todos={$todosQuery.data ?? []}
-            on:todoCompleted={completeTodo}
-            on:todoDelete={deleteTodo}
+            todos={todosQuery.data ?? []}
+            onTodoCompleted={completeTodo}
+            onTodoDelete={deleteTodo}
         />
     </div>
 </main>

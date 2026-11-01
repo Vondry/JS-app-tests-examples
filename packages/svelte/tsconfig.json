@@ -4,6 +4,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
@@ -19,6 +20,5 @@
     // Add types support for @testing-library/jest-dom asserts like .toBeInTheDocument()
     "types": ["@testing-library/jest-dom/vitest"]
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]
 }

@@ -2,11 +2,11 @@
 import type { TodoDescription } from 'shared-code/models/Todo';
 
 const todoModel = defineModel<TodoDescription>({ required: true });
-const emit = defineEmits<{ onSubmit: [void] }>();
+const emit = defineEmits<{ submit: [void] }>();
 </script>
 
 <template>
-    <form class="w-full flex gap-3" @submit.prevent="emit('onSubmit')">
+    <form class="w-full flex gap-3" @submit.prevent="emit('submit')">
         <div class="w-full">
             <label for="todo-input" class="sr-only">Enter your TODO description</label>
             <input

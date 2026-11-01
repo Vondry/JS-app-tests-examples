@@ -7,7 +7,7 @@ import { QUERY_KEYS } from './queryKeys';
 export const useCreateTodoMutation = () => {
     const queryClient = useQueryClient();
 
-    return createMutation({
+    return createMutation(() => ({
         mutationFn: (todoDescription: TodoDescription) =>
             customFetch<CreateTodoResponse>(
                 {
@@ -22,5 +22,5 @@ export const useCreateTodoMutation = () => {
                 (cachedTodos ?? []).concat(createdTodo)
             );
         }
-    });
+    }));
 };

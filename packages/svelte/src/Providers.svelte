@@ -5,7 +5,7 @@
 
     const queryClient = new QueryClient();
 
-    export let hideDevTools = false;
+    let { hideDevTools = false }: { hideDevTools?: boolean } = $props();
 </script>
 
 <QueryClientProvider client={queryClient}>

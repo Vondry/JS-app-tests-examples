@@ -26,9 +26,13 @@ describe('TodoItem', () => {
         const onTodoCompletedEvent = vi.fn();
         const onTodoDeleteEvent = vi.fn();
 
-        const { component } = render(TodoItem, { props: { todo } });
-        component.$on('todoCompleted', (e: CustomEvent<Todo>) => onTodoCompletedEvent(e.detail));
-        component.$on('todoDelete', (e: CustomEvent<Todo>) => onTodoDeleteEvent(e.detail));
+        render(TodoItem, {
+            props: {
+                todo,
+                onTodoCompleted: onTodoCompletedEvent,
+                onTodoDelete: onTodoDeleteEvent
+            }
+        });
 
         // ❓ What is wrong with following ACT and ASSERT?
         //      -> What edge case that programmer could have done, it does not test? :)

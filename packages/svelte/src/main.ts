@@ -1,7 +1,8 @@
+import { mount } from 'svelte';
 import Providers from './Providers.svelte';
 import './index.css';
 
-const app = new Providers({
+const app = mount(Providers, {
     target: document.getElementById('root')!
 });
 

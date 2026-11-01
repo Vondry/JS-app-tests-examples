@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
     import { Fa as FontAwesomeIcon } from 'svelte-fa';
     import { faCircle, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
     import { faXmark } from '@fortawesome/free-solid-svg-icons';
     import type { Todo } from 'shared-code/models/Todo';
 
-    const dispatch = createEventDispatcher<{
-        todoCompleted: Todo;
-        todoDelete: Todo;
-    }>();
+    interface Props {
+        todo: Todo;
+        onTodoCompleted?: (todo: Todo) => void;
+        onTodoDelete?: (todo: Todo) => void;
+    }
 
-    export let todo: Todo;
+    let { todo, onTodoCompleted, onTodoDelete }: Props = $props();
 </script>
 
 <div
@@ -19,7 +19,7 @@
 >
     <button
         class="flex gap-2 items-center cursor-pointer group px-2 py-2"
-        on:click={() => dispatch('todoCompleted', todo)}
+        onclick={() => onTodoCompleted?.(todo)}
     >
         {#if todo.completed}
             <FontAwesomeIcon icon={faCircleCheck} class="text-xl text-green-500" />
@@ -33,11 +33,7 @@
         {/if}
         <span>{todo.description}</span>
     </button>
-    <button
-        class="group px-2 py-2"
-        title="Press to remove"
-        on:click={() => dispatch('todoDelete', todo)}
-    >
+    <button class="group px-2 py-2" title="Press to remove" onclick={() => onTodoDelete?.(todo)}>
         <FontAwesomeIcon
             icon={faXmark}
             class="text-xl text-gray-400 group-hover:text-red-500 group-focus:text-red-500"

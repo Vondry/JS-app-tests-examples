@@ -1,8 +1,18 @@
 <script lang="ts">
-    export let todo: string;
+    interface Props {
+        todo?: string;
+        onSubmit?: () => void;
+    }
+
+    let { todo = $bindable(''), onSubmit }: Props = $props();
+
+    const handleSubmit = (e: SubmitEvent) => {
+        e.preventDefault();
+        onSubmit?.();
+    };
 </script>
 
-<form class="w-full flex gap-3" on:submit|preventDefault>
+<form class="w-full flex gap-3" onsubmit={handleSubmit}>
     <div class="w-full">
         <label for="todo-input" class="sr-only">Enter your TODO description</label>
         <input

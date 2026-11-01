@@ -33,7 +33,7 @@ const deleteTodo = (todo: Todo) => {
 <template>
     <main class="flex-1">
         <div class="container flex-col gap-6">
-            <TodoInput v-model="todo" @on-submit="createTodo" />
+            <TodoInput v-model="todo" @submit="createTodo" />
             <TodoList
                 :todos="todos ?? []"
                 @on-todo-completed="completeTodo"

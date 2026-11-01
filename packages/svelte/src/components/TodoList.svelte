@@ -2,13 +2,19 @@
     import type { Todo } from 'shared-code/models/Todo';
     import TodoItem from './TodoItem.svelte';
 
-    export let todos: Todo[];
+    interface Props {
+        todos: Todo[];
+        onTodoCompleted?: (todo: Todo) => void;
+        onTodoDelete?: (todo: Todo) => void;
+    }
+
+    let { todos, onTodoCompleted, onTodoDelete }: Props = $props();
 </script>
 
 <ul class="flex flex-col gap-2.5">
     {#each todos as todo (todo.id)}
         <li>
-            <TodoItem {todo} on:todoCompleted on:todoDelete />
+            <TodoItem {todo} {onTodoCompleted} {onTodoDelete} />
         </li>
     {/each}
 </ul>

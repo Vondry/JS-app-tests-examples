@@ -7,7 +7,7 @@ import { QUERY_KEYS } from './queryKeys';
 export const useDeleteTodoMutation = () => {
     const queryClient = useQueryClient();
 
-    return createMutation({
+    return createMutation(() => ({
         mutationFn: (todo: Todo) =>
             customFetch<DeleteTodoResponse>({
                 endpoint: `todos/${todo.id}`,
@@ -21,5 +21,5 @@ export const useDeleteTodoMutation = () => {
                 );
             }
         }
-    });
+    }));
 };

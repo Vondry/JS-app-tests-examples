@@ -3,3 +3,20 @@ import 'cross-fetch/polyfill';
 
 // Adds support for DOM functions like expect().toBeInTheDocument()
 import '@testing-library/jest-dom/vitest';
+
+// Mock window.matchMedia for JSDOM
+if (typeof window !== 'undefined' && !window.matchMedia) {
+    Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        value: (query: string) => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: () => {},
+            removeListener: () => {},
+            addEventListener: () => {},
+            removeEventListener: () => {},
+            dispatchEvent: () => false
+        })
+    });
+}

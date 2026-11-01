@@ -11,8 +11,10 @@
   "scripts": {
     "test": "concurrently 'cd packages/be && npm run test' 'cd packages/vue && npm run test -- --run' 'cd packages/react && npm run test -- --run' 'cd packages/svelte && npm run test -- --run'",
     "test:e2e": "concurrently -n E2E-REACT,E2E-VUE 'cd packages/react && npm run cy' 'cd packages/vue && npm run cy'",
-    "format:write": "concurrently 'cd packages/be && npm run format:check' 'cd packages/vue && npm run format:check' 'cd packages/react && npm run format:check' 'cd packages/svelte && npm run format:check'",
-    "lint:fix": "concurrently 'cd packages/be && npm run lint:check' 'cd packages/vue && npm run lint:check' 'cd packages/react && npm run lint:check' 'cd packages/svelte && npm run lint:check'",
+    "format:write": "concurrently 'cd packages/be && npm run format:write' 'cd packages/vue && npm run format:write' 'cd packages/react && npm run format:write' 'cd packages/svelte && npm run format:write'",
+    "format:check": "concurrently 'cd packages/be && npm run format:check' 'cd packages/vue && npm run format:check' 'cd packages/react && npm run format:check' 'cd packages/svelte && npm run format:check'",
+    "lint:fix": "concurrently 'cd packages/be && npm run lint:fix' 'cd packages/vue && npm run lint:fix' 'cd packages/react && npm run lint:fix' 'cd packages/svelte && npm run lint:fix'",
+    "lint:check": "concurrently 'cd packages/be && npm run lint:check' 'cd packages/vue && npm run lint:check' 'cd packages/react && npm run lint:check' 'cd packages/svelte && npm run lint:check'",
     "prepare": "husky"
   },
   "workspaces": [
@@ -22,14 +24,19 @@
     "packages/svelte",
     "packages/shared-code"
   ],
+  "overrides": {
+    "@nestjs/common": "^12.3.2",
+    "@nestjs/core": "^12.3.2"
+  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2"
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-regular-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.105.0",
+    "@eslint/js": "^9.22.0",
+    "@tanstack/eslint-plugin-query": "^5.105.1",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/user-event": "^14.6.8",
     "@typescript-eslint/eslint-plugin": "^8.72.1",
@@ -41,8 +48,9 @@
     "cross-fetch": "^4.1.0",
     "cypress": "^13.17.0",
     "eslint": "^9.39.5",
-    "eslint-config-prettier": "^9.1.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "jsdom": "^24.1.3",
     "msw": "^2.15.0",
@@ -52,6 +60,7 @@
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.9.1",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
   }

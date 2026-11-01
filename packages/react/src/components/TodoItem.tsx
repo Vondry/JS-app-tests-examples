@@ -17,19 +17,21 @@ export const TodoItem = ({ todo, onTodoCompleted, onTodoDelete }: Props) => (
         <button
             className="flex gap-2 items-center cursor-pointer group px-2 py-2"
             onClick={() => onTodoCompleted(todo)}
+            title={todo.completed ? 'Press to uncomplete' : 'Press to complete'}
         >
             {todo.completed ? (
-                <FontAwesomeIcon
-                    icon={faCircleCheck}
-                    title="Press to uncomplete"
-                    className="text-xl text-green-500"
-                />
+                <>
+                    <FontAwesomeIcon icon={faCircleCheck} className="text-xl text-green-500" />
+                    <span className="sr-only">Press to uncomplete</span>
+                </>
             ) : (
-                <FontAwesomeIcon
-                    icon={faCircle}
-                    title="Press to complete"
-                    className="text-xl text-gray-400 group-hover:text-green-500 group-focus:text-green-500"
-                />
+                <>
+                    <FontAwesomeIcon
+                        icon={faCircle}
+                        className="text-xl text-gray-400 group-hover:text-green-500 group-focus:text-green-500"
+                    />
+                    <span className="sr-only">Press to complete</span>
+                </>
             )}
             <span>{todo.description}</span>
         </button>

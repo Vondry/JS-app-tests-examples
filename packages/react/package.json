@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "react-app",
   "version": "0.0.1",
   "description": "",
   "author": "Tomas Vondracek",
@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "lint:check": "npm run lint -- --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "lint": "eslint ./src --ext ts,tsx",
+    "lint": "eslint ./src",
     "format:write": "npm run format -- --write",
     "format:check": "npm run format -- --check",
     "format": "prettier index.html './src/**/*.ts' './src/**/*.tsx' './src/**/*.css'",
@@ -24,22 +24,22 @@
     "cy": "concurrently -k -s first -n VITE,CYPRESS \"vite --port 8001\" \"cypress run\""
   },
   "dependencies": {
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@tanstack/react-query": "^5.105.0",
-    "@tanstack/react-query-devtools": "^5.105.0",
+    "@fortawesome/react-fontawesome": "^3.5.0",
+    "@tanstack/react-query": "^5.105.1",
+    "@tanstack/react-query-devtools": "^5.105.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/coverage-v8": "^5.0.5",
     "@vitest/ui": "^5.0.5",
     "eslint": "^9.39.5",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.26",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
   }

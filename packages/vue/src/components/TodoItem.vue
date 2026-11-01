@@ -19,20 +19,20 @@ const emit = defineEmits<{
     >
         <button
             class="flex gap-2 items-center cursor-pointer group px-2 py-2"
+            :title="todo.completed ? 'Press to uncomplete' : 'Press to complete'"
             @click="emit('onTodoCompleted', todo)"
         >
-            <FontAwesomeIcon
-                v-if="todo.completed"
-                :icon="faCircleCheck"
-                title="Press to uncomplete"
-                class="text-xl text-green-500"
-            />
-            <FontAwesomeIcon
-                v-else
-                :icon="faCircle"
-                title="Press to complete"
-                class="text-xl text-gray-400 group-hover:text-green-500 group-focus:text-green-500"
-            />
+            <template v-if="todo.completed">
+                <FontAwesomeIcon :icon="faCircleCheck" class="text-xl text-green-500" />
+                <span class="sr-only">Press to uncomplete</span>
+            </template>
+            <template v-else>
+                <FontAwesomeIcon
+                    :icon="faCircle"
+                    class="text-xl text-gray-400 group-hover:text-green-500 group-focus:text-green-500"
+                />
+                <span class="sr-only">Press to complete</span>
+            </template>
             <span>{{ todo.description }}</span>
         </button>
         <button class="group px-2 py-2" title="Press to remove" @click="emit('onTodoDelete', todo)">

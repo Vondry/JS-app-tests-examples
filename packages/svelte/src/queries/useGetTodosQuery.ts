@@ -4,8 +4,8 @@ import type { GetTodosResponse } from 'shared-code/models/Api';
 import { QUERY_KEYS } from './queryKeys';
 
 export const useGetTodosQuery = () =>
-    createQuery({
+    createQuery(() => ({
         queryKey: [QUERY_KEYS.GET_TODOS],
         queryFn: () => customFetch<GetTodosResponse>({ endpoint: 'todos', method: 'GET' }),
         staleTime: Infinity
-    });
+    }));
